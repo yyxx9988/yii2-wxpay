@@ -1,0 +1,29 @@
+{
+    "name": "yyxx9988/yii2-wxpay",
+    "description": "wechat pay extension for the Yii framework",
+    "keywords": ["yii2", "pay", "wechat"],
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/yyxx9988/yii2-wxpay/issues",
+        "forum": "https://github.com/yyxx9988/yii2-wxpay/issues",
+        "wiki": "https://github.com/yyxx9988/yii2-wxpay",
+        "source": "https://github.com/yyxx9988/yii2-wxpay"
+    },
+    "authors": [
+        {
+            "name": "yyxx9988",
+            "email": "yyxx9988@qq.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0",
+        "yiisoft/yii2-httpclient": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": { "yyxx9988\\wxpay\\": "" }
+    },
+    "extra": {
+
+    }
+}
