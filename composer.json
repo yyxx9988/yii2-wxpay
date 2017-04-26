@@ -2,7 +2,7 @@
     "name": "yyxx9988/yii2-wxpay",
     "description": "wechat pay extension for the Yii framework",
     "keywords": ["yii2", "pay", "wechat"],
-    "type": "yii2-extension",
+    "type": "library",
     "license": "BSD-3-Clause",
     "support": {
         "issues": "https://github.com/yyxx9988/yii2-wxpay/issues",

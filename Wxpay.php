@@ -111,6 +111,9 @@ class Wxpay extends Component
         if (!$this->timeStamp) {
             $this->timeStamp = time();
         }
+        if (!$this->userIp) {
+            $this->userIp = Yii::$app->getRequest()->getUserIP();
+        }
     }
 
     /**
