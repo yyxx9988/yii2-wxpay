@@ -43,12 +43,13 @@ class Unifiedorder extends Wxpay
                 $this->_order[$k] = $this->$v;
             }
         }
-//        $this->_order['time_start'] = $this->timeStamp;
-//        $this->_order['time_expire'] = $this->timeStamp + 50 * 60 + 1;
+        $this->_order['time_start'] = $this->timeStamp;
+        $this->_order['time_expire'] = $this->timeStamp + 50 * 60 + 1;
 //        $this->_order['detail'] = \yii\helpers\Json::encode([
 //            'cost_price' => $this->totalFee,
 //            'goods_detail' => $this->goodsInfo
 //        ], JSON_UNESCAPED_UNICODE);
+        $this->_order['sign'] = $this->generateSign($this->_order);
     }
 
     /**
