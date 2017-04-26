@@ -81,6 +81,10 @@ class Wxpay extends Component
      */
     public $tradeType = 'JSAPI';
     /**
+     * @var string 货币类型
+     */
+    public $feeType = 'CNY';
+    /**
      * @var string 设备信息
      */
     public $deviceInfo = 'WEB';
