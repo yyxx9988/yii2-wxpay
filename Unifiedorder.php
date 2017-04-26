@@ -4,7 +4,7 @@ namespace yyxx9988\wxpay;
 
 use yii\httpclient\Client;
 
-class Unifiedorder extends Wxpay implements UnifiedorderInterface
+class Unifiedorder extends Wxpay
 {
     /**
      * 必须存在的属性
@@ -49,6 +49,29 @@ class Unifiedorder extends Wxpay implements UnifiedorderInterface
 //            'cost_price' => $this->totalFee,
 //            'goods_detail' => $this->goodsInfo
 //        ], JSON_UNESCAPED_UNICODE);
+    }
+
+    /**
+     * 获取支付配置
+     * @return array|null
+     */
+    public function getConfig()
+    {
+        if ($this->createOrder()) {
+            if ($this->prepayId) {
+                $config = [
+                    'appId' => $this->appId,
+                    'timeStamp' => $this->timeStamp,
+                    'nonceStr' => $this->nonceStr,
+                    'package' => 'prepay_id=' . $this->prepayId,
+                    'signType' => $this->signType
+                ];
+                $config['paySign'] = $this->generateSign($config);
+
+                return $config;
+            }
+        }
+        return null;
     }
 
     /**

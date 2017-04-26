@@ -117,33 +117,6 @@ class Wxpay extends Component
     }
 
     /**
-     * 获取支付配置
-     * @return array|null
-     */
-    public function getConfig()
-    {
-        /**
-         * @var $uo Unifiedorder
-         */
-        $uo = Yii::createObject('yyxx9988\wxpay\Unifiedorder');
-        if ($uo->createOrder()) {
-            if ($this->prepayId) {
-                $config = [
-                    'appId' => $this->appId,
-                    'timeStamp' => $this->timeStamp,
-                    'nonceStr' => $this->nonceStr,
-                    'package' => 'prepay_id=' . $this->prepayId,
-                    'signType' => $this->signType
-                ];
-                $config['paySign'] = $this->generateSign($config);
-
-                return $config;
-            }
-        }
-        return null;
-    }
-
-    /**
      * 预支付交易数据
      * @return string
      */
