@@ -43,12 +43,8 @@ class Unifiedorder extends Wxpay
                 $this->_order[$k] = $this->$v;
             }
         }
-        $this->_order['time_start'] = $this->timeStamp;
-        $this->_order['time_expire'] = $this->timeStamp + 50 * 60 + 1;
-//        $this->_order['detail'] = \yii\helpers\Json::encode([
-//            'cost_price' => $this->totalFee,
-//            'goods_detail' => $this->goodsInfo
-//        ], JSON_UNESCAPED_UNICODE);
+        $this->_order['time_start'] = date('YmdHis', $this->timeStamp);
+        $this->_order['time_expire'] = date('YmdHis', $this->timeStamp + 5 * 60 + 1);
         $this->_order['sign'] = $this->generateSign($this->_order);
     }
 
@@ -87,9 +83,6 @@ class Unifiedorder extends Wxpay
                     'class' => 'yii\httpclient\XmlFormatter',
                     'rootTag' => 'xml'
                 ],
-                'requestConfig' => [
-                    'format' => Client::FORMAT_XML
-                ],
                 'responseConfig' => [
                     'format' => Client::FORMAT_XML
                 ],
@@ -97,8 +90,9 @@ class Unifiedorder extends Wxpay
         ]);
 
         $result = $client->createRequest()
-            ->setMethod('post')
             ->setUrl(self::API_UNIFIEDORDER)
+            ->setMethod('post')
+            ->setFormat(Client::FORMAT_XML)
             ->setData($this->_order)
             ->setOptions([
                 'timeout' => 24
